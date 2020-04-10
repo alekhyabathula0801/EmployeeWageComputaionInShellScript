@@ -37,3 +37,4 @@ do
 done
 totalSalary=$(($totalEmpHr*$empRatePerHr ))
 echo Daily wage ${empDailyWage[@]}
+echo "All Keys " ${!empDailyWage[@]}
