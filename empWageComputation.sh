@@ -1,12 +1,15 @@
 #!/bin/bash -x
-echo Welcome to employee wage computation program
+#constants for the program
 partTime=2
 present=1
 absent=0
 empRatePerHr=20
-numWorkingDay=20
-totalSalary=0
-for (( day=1; day<=$numWorkingDay; day++ ))
+numWorkingDays=20
+maxWorkingHrs=100
+#variables
+totalEmpHr=0
+totalWorkingDays=0
+while [ $totalWorkingDays -lt $numWorkingDays -a $totalEmpHr -lt $maxWorkingHrs ]
 do
     case $((RANDOM%3)) in
 	$present)
@@ -19,6 +22,7 @@ do
         	empHr=4
 		;;
     esac
-	salary=$(($empHr*$empRatePerHr))
-	totalSalary=$(($totalSalary + $salary ))
+	totalEmpHr=$(($totalEmpHr + $empHr ))
+	((totalWorkingDays++))
 done
+totalSalary=$(($totalEmpHr*$empRatePerHr ))
